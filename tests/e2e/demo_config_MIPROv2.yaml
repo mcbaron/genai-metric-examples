@@ -1,0 +1,24 @@
+prompt:
+  model:
+    temperature: 0.7
+    model_names:
+      - anthropic.claude-v3-5-sonnet
+      # - claude_sonnet_3_5 #llama3_2_3b haiku_3 haiku_3_5
+    top_p: 0.9
+    repetition_penalty: 1.1
+    length_penalty: 1.2
+  optimization:
+    # Pulling Hyperparameters from Literature (https://arxiv.org/pdf/2412.15298)
+    optimizer_type: MIPROv2
+    params:
+      num_candidates: 3
+      init_temperature: 0
+      max_bootstrapped_demos: 8
+      max_labeled_demos: 16
+      metric_threshold: 0.85
+      num_threads: 4
+      num_trials: 15
+      minibatch_size: 25
+      minibatch_full_eval_steps: 10
+data:
+  test_size: 1
